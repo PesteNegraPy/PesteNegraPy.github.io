@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="icon" href="https://i.pinimg.com/564x/13/6b/67/136b6765ea8950dfd026fd1d104f84ce.jpg" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PesteNegra !</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; 
+            position: relative; 
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); 
+            z-index: 9999; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .start-button {
+            background-color: #000000;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .start-button:hover {
+            background-color: #000000;
+        }
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            display: none; 
+        }
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+        .container {
+            position: relative;
+            width: 400px;
+            background-color: rgba(0, 0, 0, 0.9); 
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden; 
+            color: #fff; 
+            display: none; 
+        }
+        .banner {
+            height: 100px;
+            background-image: url('https://i.pinimg.com/564x/c3/cd/06/c3cd0629607fda16162b80d61053dd24.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #36393f;
+        }
+        .profile-header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 20px;
+            border: 2px solid #ff0000;
+        }
+        .profile-header h1 {
+            font-size: 18px;
+            margin: 0;
+        }
+        .profile-header span {
+            color: #99aab5;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+        .profile-info {
+            padding: 20px;
+            border-bottom: 1px solid #36393f;
+        }
+        .profile-info x1 {
+        padding: 20px;
+        border-bottom: 1px solid #36393f;
+        }
+        .profile-info p {
+            margin: 0;
+            line-height: 1.5;
+        }
+        .profile-buttons {
+            padding: 20px;
+        }
+        .profile-buttons a {
+            display: inline-block;
+            background-color: #000000;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .profile-buttons a:hover {
+            background-color: #677bc4;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay" id="overlay">
+        <button class="start-button" onclick="startApp()">Clique aqui !</button>
+    </div>
+    <div class="video-container" id="videoContainer">
+        <video id="profileVideo" loop>
+            <source src="https://cdn.discordapp.com/attachments/1244849679146156115/1245181070366871653/PORRADAO_NA_XOTA_-_MCs_MILLER_MARTE_FUGA_DJ_RUGAL_ORIGINAL_DJ_TIO_JOTA.mp4?ex=6657d0bd&is=66567f3d&hm=d4c17a027fcf749db9b523ab26cf23ed70a3edc2fd1a3dd79b6b1a328e1eb06f&" type="video/mp4">
+        </video>
+    </div>
+    <div class="container" id="profileContainer">
+        <div class="banner"></div>
+        <div class="profile-header">
+            <img src="https://i.pinimg.com/originals/56/7d/07/567d073b1237293d60c38a19f2c7ae2a.gif" alt="Foto de perfil">
+            <div>
+                <h1>PesteNegra.py</h1>
+                <span>pestenegra.py</span>
+            </div>
+        </div>
+        <div class="profile-info">
+            <p><strong>SOBRE MIM</strong></p>
+            <p>Um noia que manja um pouco nas internets</p>
+            <p>papo reto</p>
+            <p><strong>RECADO</strong></p>
+            <p>"Se você só é bom em uma coisa, torne-se o melhor nela."</p>
+            <p>fiz na brisakkkkj</p>
+        </div>
+        <div class="profile-buttons">
+            <x1><strong>CONEXÕES</strong></x1>
+        </div>
+        <div class="profile-buttons">
+            <a href="https://discord.com/users/1244232077243842611" target="_blank"><img src="https://i.pinimg.com/564x/8a/c3/f9/8ac3f9735abb4b0197ee838735715833.jpg" alt="Discord" style="width: 30px; height: 30px;"></a>
+            <a href="https://www.instagram.com/juninn7kk/ target="_blank"><img src="https://i.pinimg.com/564x/21/d6/7f/21d67f1d6b3be5bb2e39395311c77fc6.jpg" alt="Instagram" style="width: 30px; height: 30px;"></a>
+            <a href="https://github.com/PesteNegraPy" target="_blank"><img src="https://i.pinimg.com/564x/64/88/0b/64880b9b0fe5b53bbe3f7280d262b33f.jpg" alt="GitHub" style="width: 30px; height: 30px;"></a>
+        </div>
+    </div>
+    <script>
+        function startApp() {
+            var overlay = document.getElementById('overlay');
+            var videoContainer = document.getElementById('videoContainer');
+            var profileContainer = document.getElementById('profileContainer');
+            overlay.style.display = 'none'; 
+            videoContainer.style.display = 'block'; 
+            profileContainer.style.display = 'block'; 
+            startVideo(); 
+        }
+    
+        function startVideo() {
+            var video = document.getElementById('profileVideo');
+            video.play(); 
+        }
+    </script>
+    </body>
+    </html>
+    
