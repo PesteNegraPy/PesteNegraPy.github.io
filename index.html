@@ -66,6 +66,9 @@
             overflow: hidden; 
             color: #fff; 
             display: none; 
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.1s ease-out;
         }
         .banner {
             height: 100px;
@@ -100,8 +103,8 @@
             border-bottom: 1px solid #36393f;
         }
         .profile-info x1 {
-        padding: 20px;
-        border-bottom: 1px solid #36393f;
+            padding: 20px;
+            border-bottom: 1px solid #36393f;
         }
         .profile-info p {
             margin: 0;
@@ -120,8 +123,23 @@
             margin-right: 10px;
             margin-bottom: 10px;
         }
+        .profile-buttons a img {
+            width: 30px;
+            height: 30px;
+        }
         .profile-buttons a:hover {
             background-color: #000000;
+        }
+        .glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            border-radius: 20px;
+            background: radial-gradient(circle at var(--x) var(--y), rgba(255, 255, 255, 0.2), transparent);
+            transition: background 0.1s ease-out;
         }
     </style>
 </head>
@@ -155,10 +173,11 @@
             <x1><strong>CONEXÕES</strong></x1>
         </div>
         <div class="profile-buttons">
-            <a href="https://discord.com/users/1244232077243842611" target="_blank"><img src="https://i.pinimg.com/564x/8a/c3/f9/8ac3f9735abb4b0197ee838735715833.jpg" alt="Discord" style="width: 30px; height: 30px;"></a>
-            <a href="https://www.instagram.com/juninn7kk/ target="_blank"><img src="https://i.pinimg.com/564x/21/d6/7f/21d67f1d6b3be5bb2e39395311c77fc6.jpg" alt="Instagram" style="width: 30px; height: 30px;"></a>
-            <a href="https://steamcommunity.com/profiles/76561199696673095/" target="_blank"><img src="https://i.pinimg.com/564x/e8/61/de/e861de5a9ad11ccc53708028df8b8c63.jpg" alt="GitHub" style="width: 30px; height: 30px;"></a>
+            <a href="https://discord.com/users/1244232077243842611" target="_blank"><img src="https://i.pinimg.com/564x/8a/c3/f9/8ac3f9735abb4b0197ee838735715833.jpg" alt="Discord"></a>
+            <a href="https://www.instagram.com/juninn7kk/" target="_blank"><img src="https://i.pinimg.com/564x/21/d6/7f/21d67f1d6b3be5bb2e39395311c77fc6.jpg" alt="Instagram"></a>
+            <a href="https://steamcommunity.com/profiles/76561199696673095/" target="_blank"><img src="https://i.pinimg.com/564x/e8/61/de/e861de5a9ad11ccc53708028df8b8c63.jpg" alt="Steam"></a>
         </div>
+        <div class="glow"></div>
     </div>
     <script>
         function startApp() {
@@ -175,7 +194,34 @@
             var video = document.getElementById('profileVideo');
             video.play(); 
         }
+
+        document.addEventListener('mousemove', function (event) {
+            var container = document.getElementById('profileContainer');
+            var rect = container.getBoundingClientRect();
+            var x = event.clientX - rect.left;
+            var y = event.clientY - rect.top;
+
+            var centerX = rect.width / 2;
+            var centerY = rect.height / 2;
+
+            var percentX = (x - centerX) / centerX;
+            var percentY = (y - centerY) / centerY;
+
+            var maxRotate = 10; // Limite de rotação em graus
+            var rotateY = percentX * maxRotate;
+            var rotateX = -percentY * maxRotate;
+
+            container.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+
+            var glow = document.querySelector('.glow');
+            glow.style.setProperty('--x', x + 'px');
+            glow.style.setProperty('--y', y + 'px');
+        });
+
+        document.addEventListener('mouseleave', function () {
+            var container = document.getElementById('profileContainer');
+            container.style.transform = `rotateY(0deg) rotateX(0deg)`;
+        });
     </script>
-    </body>
-    </html>
-    
+</body>
+</html>
